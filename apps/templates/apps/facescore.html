@@ -1,0 +1,78 @@
+{% load mathfilters %}
+{% load static %}
+
+Azure FaceAPI Score
+<br>
+
+<!--
+{% for faces in detected_faces  %}
+
+  <ul>
+    <li>
+      faceId: {{ faces.face_id }}
+    </li>
+    <li>
+      smile: {{ faces.face_attributes.smile|mul:100 }}%
+    </li>
+    <li>
+      happines: {{ faces.face_attributes.emotion.happiness|mul:100 }}%
+    </li>
+  </ul>
+{% endfor %}
+-->
+
+<img src="{{ img.show }}" >
+
+
+<html>
+  <head>
+    <title>Azure FaceAPI Score</title>
+  </head>
+  <body>
+    <form action="{% url 'facescore' %}" method="POST" enctype="multipart/form-data">
+      <input type="text" name="fileTitle" />
+      </br>
+      <input type="file" name="uploadFile" />
+      {% csrf_token %}
+      </br>
+      <input type="submit" value="upload" />
+      </br>
+    </form>
+
+    {% for faces in detected_faces  %}
+    <table border="1">
+      <thead>
+        <tr>
+         <th>項目名</th>
+         <th>結果</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>title</th>
+          <td>{{ title }}</td>
+        </tr>
+
+        <tr>
+          <th>uploadfile</th>
+          <td><img src='data:image/png;base64,{{uploadfile}}' /></td>
+        </tr>
+
+        <tr>
+          <th>faceId</th>
+          <td>{{ faces.face_id }}</td>
+        </tr>
+        <tr>
+          <th>happines</th>
+          <td> {{ faces.face_attributes.emotion.happiness|mul:100 }}%</td>
+        </tr>
+        <tr>
+          <th>smile</th>
+          <td>{{ faces.face_attributes.smile|mul:100 }}%</td>
+        </tr>
+      </tbody>
+    </table>
+    {% endfor %}
+
+  </body>
+</html>
