@@ -26,7 +26,10 @@ SECRET_KEY = 'django-insecure-(p+f8tfnf^wa8nh22tj9h_)4u$vft_sy_lsu#5uaq7(dgt7t-j
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    'azurefaceapiservices.azurewebsites.net',
+]
 
 
 # Application definition
@@ -127,3 +130,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://azurefaceapiservices.azurewebsites.net'
+]

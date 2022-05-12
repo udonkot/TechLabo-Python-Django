@@ -30,8 +30,10 @@ Azure FaceAPI Score
   </head>
   <body>
     <form action="{% url 'facescore' %}" method="POST" enctype="multipart/form-data">
+<!--
       <input type="text" name="fileTitle" />
       </br>
+-->
       <input type="file" name="uploadFile" />
       {% csrf_token %}
       </br>
@@ -49,27 +51,84 @@ Azure FaceAPI Score
       </thead>
       <tbody>
         <tr>
-          <th>title</th>
-          <td>{{ title }}</td>
+          <th>年齢</th>
+          <td> {{ faces.face_attributes.age }}</td>
         </tr>
-
+        <tr>
+          <th>性別</th>
+          <td> {{ faces.face_attributes.gender }}</td>
+        </tr>
+        <tr>
+          <th>笑顔</th>
+          <td>{{ faces.face_attributes.smile|mul:100 }}%</td>
+        </tr>
+        <tr>
+          <th>眼鏡</th>
+          <td> {{ faces.face_attributes.glasses }}</td>
+        </tr>
+        <tr>
+          <th>アクセサリー</th>
+          <td> {{ faces.face_attributes.accessories }}</td>
+        </tr>
+<!--
+        <tr>
+          <th>顔の毛</th>
+          <td> {{ faces.face_attributes.facial_hair }}</td>
+        </tr>
+        <tr>
+          <th>髪</th>
+          <td>{{ faces.face_attributes.hair }}</td>
+        </tr>
+        <tr>
+          <th>メイク</th>
+          <td>{{ faces.face_attributes.makeup }}</td>
+        </tr>
+        <tr>
+          <th>頭の向き</th>
+          <td> {{ faces.face_attributes.head_pose }}</td>
+        </tr>
+        <tr>
+          <th>口の閉塞</th>
+          <td>{{ faces.face_attributes.occlusion }}</td>
+        </tr>
+-->
+        <tr>
+          <th>幸福度</th>
+          <td> {{ faces.face_attributes.emotion.happiness|mul:100 }}%</td>
+        </tr>
+        <tr>
+          <th>怒り度</th>
+          <td> {{ faces.face_attributes.emotion.anger|mul:100 }}%</td>
+        </tr>
+        <tr>
+          <th>悲しみ度</th>
+          <td> {{ faces.face_attributes.emotion.sadness|mul:100 }}%</td>
+        </tr>
+        <tr>
+          <th>驚き度</th>
+          <td> {{ faces.face_attributes.emotion.surprise|mul:100 }}%</td>
+        </tr>
+        <tr>
+          <th>恐怖度</th>
+          <td> {{ faces.face_attributes.emotion.fear|mul:100 }}%</td>
+        </tr>
+        <tr>
+          <th>軽蔑度</th>
+          <td> {{ faces.face_attributes.emotion.contempt|mul:100 }}%</td>
+        </tr>
+        <tr>
+          <th>嫌悪度</th>
+          <td> {{ faces.face_attributes.emotion.disgust|mul:100 }}%</td>
+        </tr>
+        <tr>
+          <th>中性度</th>
+          <td> {{ faces.face_attributes.emotion.neutral|mul:100 }}%</td>
+        </tr>
         <tr>
           <th>uploadfile</th>
           <td><img src='data:image/png;base64,{{uploadfile}}' /></td>
         </tr>
 
-        <tr>
-          <th>faceId</th>
-          <td>{{ faces.face_id }}</td>
-        </tr>
-        <tr>
-          <th>happines</th>
-          <td> {{ faces.face_attributes.emotion.happiness|mul:100 }}%</td>
-        </tr>
-        <tr>
-          <th>smile</th>
-          <td>{{ faces.face_attributes.smile|mul:100 }}%</td>
-        </tr>
       </tbody>
     </table>
     {% endfor %}

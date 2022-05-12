@@ -1,16 +1,9 @@
-from asyncio.windows_events import NULL
 import base64
-import binascii
-import io
 from pickle import FALSE
-from tkinter import Image
-from turtle import up
-from django.apps import apps
 from django.shortcuts import render
 from apps.models import Upload
 
-from apps.main import drawFaceRectangles, getFaceSample
-from django.core.files.base import ContentFile
+from apps.main import getFaceSample
 
 from facescore.settings import MEDIA_ROOT
 
@@ -39,9 +32,6 @@ def facescore(request):
 
   
     encodeData = ""
-    decordData = ""
-    img = ""
-    hoge = NULL
     
     print("base64:")
 #    encodeData = base64.b64encode(Upload.uploadeBinary.read()).decode("ascii")
@@ -67,7 +57,6 @@ def facescore(request):
     
   else:
     context = {
-      'files': NULL,
       'title': "",
 #      'img': drawFaceRectangles(),
     }

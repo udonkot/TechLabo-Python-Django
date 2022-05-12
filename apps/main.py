@@ -1,18 +1,10 @@
-import asyncio
 import io
-import glob
 import os
-import sys
-import time
-import uuid
 import requests
-from urllib.parse import urlparse
 from PIL import Image, ImageDraw
 from azure.cognitiveservices.vision.face import FaceClient
 from msrest.authentication import CognitiveServicesCredentials
-from azure.cognitiveservices.vision.face.models import TrainingStatusType, Person, DetectedFace
-
-from apps.models import FaceInfo
+# from azure.cognitiveservices.vision.face.models import TrainingStatusType, Person, DetectedFace
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -47,7 +39,7 @@ single_face_image_url = 'https://farm3.static.flickr.com/2496/3800942346_90c2ce1
 #single_face_image_url = 'https://app.box.com/s/1ago5ti67baf27qfwfzlhmcpgtvzrkl8'
 
 # Attributes you want returned with the API call, a list of FaceAttributeType enum (string format)
-face_attributes = ['age', 'gender', 'headPose', 'smile', 'facialHair', 'glasses', 'emotion']
+face_attributes = ['age', 'gender', 'headPose', 'smile', 'facialHair', 'glasses', 'emotion', 'hair', 'makeup', 'occlusion', 'accessories', ]
 
 # -----
 # Detect a face in an image that contains a single face
