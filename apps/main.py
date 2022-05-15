@@ -1,7 +1,9 @@
+import base64
 import io
 import os
 import requests
-from PIL import Image, ImageDraw
+import imghdr
+from PIL import Image, ImageDraw, ImageFont
 from azure.cognitiveservices.vision.face import FaceClient
 from msrest.authentication import CognitiveServicesCredentials
 # from azure.cognitiveservices.vision.face.models import TrainingStatusType, Person, DetectedFace
@@ -53,46 +55,45 @@ def getFaceSample(filePath):
     print('Path:')
     print(filePath)
     imgData = open(filePath, 'rb')
-    
 
+    retArray = []
+    
+    
+    # 顔識別情報取得
     detected_faces = face_client.face.detect_with_stream(image=imgData, return_face_attributes=face_attributes)
-#    detected_faces = face_client.face.detect_with_url(url=single_face_image_url, return_face_attributes=face_attributes)
-    if not detected_faces:
-        raise Exception('No face detected from image {}'.format(single_image_name))
-
-
-    for face in detected_faces:
-        print()
-        print('Detected face ID from', os.path.basename(single_face_image_url), ':')
-        # ID of detected face
-        print(face.face_id)
-        # Show all facial attributes from the results
-        print()
-        print('Facial attributes detected:')
-        print('Age: ', face.face_attributes.age)
-        print('Gender: ', face.face_attributes.gender)
-        print('Head pose: ', face.face_attributes.head_pose)
-        print('Smile: ', face.face_attributes.smile)
-        print('Facial hair: ', face.face_attributes.facial_hair)
-        print('Glasses: ', face.face_attributes.glasses)
-        print('Emotion: ')
-        print('\tAnger: ', face.face_attributes.emotion.anger)
-        print('\tContempt: ', face.face_attributes.emotion.contempt)
-        print('\tDisgust: ', face.face_attributes.emotion.disgust)
-        print('\tFear: ', face.face_attributes.emotion.fear)
-        print('\tHappiness: ', face.face_attributes.emotion.happiness)
-        print('\tNeutral: ', face.face_attributes.emotion.neutral)
-        print('\tSadness: ', face.face_attributes.emotion.sadness)
-        print('\tSurprise: ', face.face_attributes.emotion.surprise)
-        print()
+    # ファイルパスを指定する場合はこちら
+    # detected_faces = face_client.face.detect_with_url(url=single_face_image_url, return_face_attributes=face_attributes)
     
-#    imgData =  drawImg(imgData)   
-#    faceInfo = FaceInfo(
-      #detected_faces = detected_faces,
-#      faceImg = imgData,
-#    )           
+    if not detected_faces:
+        return retArray
+#        raise Exception('No face detected from image {}'.format(filePath))
+
+    
+    # 取得結果解析
+    for face in detected_faces:
+        # ログ出力
+        showFaceLog(face)
+        faceImgData = Image.open(filePath)
+        drawing = ImageDraw.Draw(faceImgData)
+        drawing.rectangle(getRectangle(face), outline='Red', width = 3)
         
-    return detected_faces
+        output = io.BytesIO()
+        image_type = imghdr.what(filePath)
+        print('imgType : ' + image_type)
+        faceImgData.save(output, format=image_type)
+        wrkArray = [face, base64.b64encode(output.getvalue()).decode("ascii")]
+        retArray.append(wrkArray)
+    
+#    faceImgData = Image.open(filePath)
+#    drawing = ImageDraw.Draw(faceImgData)
+#    for face in detected_faces:
+#      drawing.rectangle(getRectangle(face), outline='Red', width = 3)
+#    faceImgData.show()
+
+    print("len:" + str(len(retArray)))
+        
+        
+    return retArray
 #    return faceInfo
 
 # Convert width height to a point in a rectangle
@@ -131,4 +132,28 @@ def drawImg(imgData):
     
     return imgData
     
-
+# Face Attribute出力
+def showFaceLog(face):
+    print()
+    print('Detected face ID from', os.path.basename(single_face_image_url), ':')
+    # ID of detected face
+    print(face.face_id)
+    # Show all facial attributes from the results
+    print()
+    print('Facial attributes detected:')
+    print('Age: ', face.face_attributes.age)
+    print('Gender: ', face.face_attributes.gender)
+    print('Head pose: ', face.face_attributes.head_pose)
+    print('Smile: ', face.face_attributes.smile)
+    print('Facial hair: ', face.face_attributes.facial_hair)
+    print('Glasses: ', face.face_attributes.glasses)
+    print('Emotion: ')
+    print('\tAnger: ', face.face_attributes.emotion.anger)
+    print('\tContempt: ', face.face_attributes.emotion.contempt)
+    print('\tDisgust: ', face.face_attributes.emotion.disgust)
+    print('\tFear: ', face.face_attributes.emotion.fear)
+    print('\tHappiness: ', face.face_attributes.emotion.happiness)
+    print('\tNeutral: ', face.face_attributes.emotion.neutral)
+    print('\tSadness: ', face.face_attributes.emotion.sadness)
+    print('\tSurprise: ', face.face_attributes.emotion.surprise)
+    print()    

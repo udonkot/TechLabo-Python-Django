@@ -1,6 +1,9 @@
 import base64
+from email.mime import image
 from pickle import FALSE
 from django.shortcuts import render
+from PIL import Image
+
 from apps.models import Upload
 
 from apps.main import getFaceSample
@@ -31,11 +34,16 @@ def facescore(request):
     documents = Upload.objects.all()
 
   
-    encodeData = ""
-    
-    print("base64:")
+#    encodeData = ""
+#    print("base64:")
 #    encodeData = base64.b64encode(Upload.uploadeBinary.read()).decode("ascii")
-    encodeData = base64.b64encode(uploadFile.read()).decode("ascii")
+#    encodeData = base64.b64encode(uploadFile.read()).decode("ascii")
+
+    imageData = Image.open(uploadFile)
+    print('size')
+    print('width:' + str(imageData.width)) 
+    print('height:' + str(imageData.height)) 
+    
 
     fname = MEDIA_ROOT + '/uploads/' + 'aaa.jpg'
     f = open(fname, 'wb+')
@@ -44,15 +52,22 @@ def facescore(request):
     f.close
     
     ret = getFaceSample(fname)
-
-    context = {
-      'files': documents,
-      'title': fileTitle,
+    
+    if not ret :
+      context = {
+        'files': documents,
+        'title': fileTitle,
+        'error': '画像から人物を特定できませんでした。。。'
+      }
+    else :
+      context = {
+        'files': documents,
+        'title': fileTitle,
 #     'uploadfile': base64.b64encode(Upload.uploaderFile),
-      'uploadfile': encodeData,
-      'detected_faces': ret,
+#      'uploadfile': encodeData,
+       'detected_faces': ret,
 #      'img': drawFaceRectangles(),
-    }
+      }
 
     
   else:
