@@ -1,8 +1,7 @@
+{% extends 'apps/base.html' %}
 {% load mathfilters %}
 {% load static %}
 
-Azure FaceAPI Score
-<br>
 
 <!--
 {% for faces in detected_faces  %}
@@ -21,32 +20,40 @@ Azure FaceAPI Score
 {% endfor %}
 -->
 
-<img src="{{ img.show }}" >
 
 
-<html>
-  <head>
-    <title>Azure FaceAPI Score</title>
-  </head>
-  <body>
-    <form action="{% url 'facescore' %}" method="POST" enctype="multipart/form-data">
-<!--
-      <input type="text" name="fileTitle" />
-      </br>
--->
-      <input type="file" name="uploadFile" />
-      {% csrf_token %}
-      </br>
-      <input type="submit" value="upload" />
-      </br>
-    </form>
+{% block content %}
+Azure FaceAPI サンプル</br>
+6MB以内の画像ファイルがアップロード対象になります。<br>
 
-    {% for faces in detected_faces  %}
-    <table border="1">
-      <thead>
+<div class=”row”>
+  <img src="{{ img.show }}" >
+
+
+  <form action="{% url 'facescore' %}" method="POST" enctype="multipart/form-data">
+  <!--
+        <input type="text" name="fileTitle" />
+        </br>
+  -->
+    <input type="file" name="uploadFile" />
+    {% csrf_token %}
+    </br>
+    <input type="submit" value="upload" />
+    </br>
+  </form>
+
+  {% if error %}
+    {{ error }}
+  {% endif %}
+  
+  画像ファイルから{{ detected_faces|length }}件検出しました！！</br>
+
+  {% for faces, faceImgData in detected_faces  %}
+    <table border='1' class="table table-striped">
+      <thead class='thead-dark'>
         <tr>
-         <th>項目名</th>
-         <th>結果</th>
+        <th>項目名</th>
+        <th>結果</th>
         </tr>
       </thead>
       <tbody>
@@ -126,12 +133,13 @@ Azure FaceAPI Score
         </tr>
         <tr>
           <th>uploadfile</th>
-          <td><img src='data:image/png;base64,{{uploadfile}}' /></td>
+          <td><img src='data:image/png;base64,{{faceImgData}}' class='w-100'/></td>
         </tr>
 
       </tbody>
     </table>
-    {% endfor %}
-
-  </body>
-</html>
+  </br>
+  {% endfor %}
+  
+</div>
+{% endblock%}
