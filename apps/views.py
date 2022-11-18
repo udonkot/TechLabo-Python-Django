@@ -15,7 +15,7 @@ def index(request):
   context = {
       'title': 'test page'
   }   
-  return render(request, 'apps/index.html', context)
+  return render(request, 'apps/body.html', context)
 
 def facescore(request):
   

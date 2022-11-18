@@ -1,0 +1,22 @@
+div#header {
+  background-color: red;
+  height: 100px;
+}
+
+div#sidebar {
+  background-color: yellow;
+  float: left;
+  height: 300px;
+  width: 200px;
+}
+
+div#main {
+  float: left;
+  height: 300px;
+}
+
+div#footer {
+  background-color: green;
+  clear: left;
+  height: 100px;
+}
