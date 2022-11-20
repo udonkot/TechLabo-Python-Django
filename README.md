@@ -16,7 +16,7 @@
 git clone https://github.com/udonkot/TechLabo-Java-SpringBoot.git
 ```
 
-3. クローンしたフォルダに移動し、developブランチをチェックアウト
+3. クローンしたフォルダに移動し、XXXブランチをチェックアウト　※検討中
 ```
 cd TechLabo-Python-Django
 git checkout develop
