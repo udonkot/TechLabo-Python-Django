@@ -3,9 +3,16 @@ from django.conf import settings
 from django.conf.urls.static import static
 from . import views
 
+# Add your urls here.
 urlpatterns = [
-    path('index', views.index, name='index'),
+    # 勉強会で使用するurls
+    path('home', views.home, name='home'),
+    path('sample', views.sample, name='sample'),
+    path('okayasu', views.okayasu, name='okayasu'),
+
+    # 勉強会で使用しないurls
     path('facescore', views.facescore, name='facescore'),    
+    path('index', views.index, name='index')
 ]
 
 if settings.DEBUG: 
