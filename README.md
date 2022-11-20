@@ -30,7 +30,7 @@ cd C:\unit_study_meeting\TechLabo-Python-Django
 python manage.py runserver
 ```
 
-5. [localhost:8080](http://localhost:8000/apps/index)にアクセスし、画面が表示されれば成功！
+5. [localhost:8000/apps/index](http://localhost:8000/apps/index)にアクセスし、画面が表示されれば成功！
 
 ## 3. 利用方法(初回：featureブランチ作成～作業用フォルダ作成)
 
