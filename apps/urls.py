@@ -5,6 +5,7 @@ from . import views
 
 # Add your urls here.
 urlpatterns = [
+    path('facescore', views.facescore, name='facescore'),    
     path('index', views.index, name='index'),
     path('sample', views.sample, name='sample'),
     path('okayasu', views.okayasu, name='okayasu'),
