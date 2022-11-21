@@ -9,6 +9,7 @@ urlpatterns = [
     path('home', views.home, name='home'),
     path('sample', views.sample, name='sample'),
     path('okayasu', views.okayasu, name='okayasu'),
+    path('hazeyama', views.hazeyama, name='hazeyama'),
 
     # 勉強会で使用しないurls
     path('facescore', views.facescore, name='facescore'),    
