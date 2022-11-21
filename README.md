@@ -1,4 +1,4 @@
-# TechLabo-Java-SpringBoot
+# TechLabo-Java-Django
 
 ## 1. 前提条件
 以下がローカルPCにインストールされていること
@@ -26,7 +26,13 @@ git checkout develop
 ```
 cd C:{ クローン先のパス }\TechLabo-Python-Django\apps\venv\Scripts\
 activate.bat
-cd C:\unit_study_meeting\TechLabo-Python-Django
+
+cd C:{ クローン先のパス }\TechLabo-Python-Django
+pip install -r requirements.txt
+
+「.env」ファイルを作成
+※ファイルの内容はセキュリティの関係でチャットのメッセージで送ります
+
 python manage.py runserver
 ```
 
@@ -46,31 +52,37 @@ python manage.py runserver
 ```
 cd TechLabo-Java-SpringBoot
 git checkout [featureブランチ名]
+
+（チェックアウトできない場合、コミットを実行後にfeatureに直接pushする）
+git push origin develop:feature-XXX
 ```
 
-3. ユーザ向けのviewsを新規作成する。<br/>
-以下クラスファイルを参考に作成
+3. viewsを修正する。<br/>
 ```
 TechLabo-Python-Django\apps
 views.pyに自分の名前のメソッドを追加する（sampleメソッドを参考に）
 ```
 
 4. ユーザ向けのhtmlファイルを新規作成する。<br/>
-以下htmlファイルを参考に作成
 ```
 TechLabo-Python-Django\apps\templates\apps\rooms
 ※ユーザ名のフォルダ、main.htmlを作成する。
 ※main.htmlの"Template Room Main"を任意の値に修正する
 ```
 
-5. テンプレートファイルを更新する。<br/>
-以下htmlファイルを修正する
+5. urls.pyを更新する
+```
+urlpatternsに以下を追加 ※sampleをユーザ名に変更
+path('sample', views.sample, name='sample'),
+```
+
+6. sidebar.htmlを更新する。<br/>
 ```
 TechLabo-Python-Django\apps\templates\apps\rooms\sidebar.html
 ※aタグを追加する。href属性名は"/rooms/[ユーザ名]" 
 ```
 
-6. 「3．～5．」で作成、更新したファイルをfeatureブランチにコミット／プッシュする<br/>
+7. 「3．～6．」で作成、更新したファイルをfeatureブランチにコミット／プッシュする<br/>
 developブランチで作業していた場合はブランチを切り替えること
 
-7. プルリクエストを作成する。マージ先はdevelopブランチ
+8. プルリクエストを作成する。マージ先はdevelopブランチ
