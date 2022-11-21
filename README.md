@@ -1,4 +1,4 @@
-# TechLabo-Java-SpringBoot
+# TechLabo-Java-Django
 
 ## 1. 前提条件
 以下がローカルPCにインストールされていること
@@ -26,7 +26,7 @@ git checkout develop
 ```
 cd C:{ クローン先のパス }\TechLabo-Python-Django\apps\venv\Scripts\
 activate.bat
-cd C:\unit_study_meeting\TechLabo-Python-Django
+cd C:{ クローン先のパス }\TechLabo-Python-Django
 python manage.py runserver
 ```
 
