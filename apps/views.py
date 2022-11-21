@@ -27,6 +27,12 @@ def okayasu(request):
   }   
   return render(request, 'apps/rooms/okayasu/main.html', context)
 
+def hazeyama(request):
+  context = {
+      'message': "Hello hazeyama's Page!"
+  }   
+  return render(request, 'apps/rooms/hazeyama/main.html', context)
+
 # 勉強会で使用しないviews
 def index(request):
   context = {
