@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\yutoy\Desktop\iglobe\azure-faces-sample\venv
+set VIRTUAL_ENV=C:\Users\udonk\IdeaProjects\azure-faces-sample\venv
 
 if not defined PROMPT set PROMPT=$P$G
 

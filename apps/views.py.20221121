@@ -21,12 +21,6 @@ def sample(request):
   }   
   return render(request, 'apps/rooms/sample/main.html', context)
 
-def igyamane(request):
-  context = {
-      'message': "Hello yamane's Page!"
-  }   
-  return render(request, 'apps/rooms/igyamane/main.html', context)
-
 def okayasu(request):
   context = {
       'message': "Hello okayasu's Page!"
