@@ -70,7 +70,7 @@ TechLabo-Python-Django\apps\templates\apps\rooms
 ※main.htmlの"Template Room Main"を任意の値に修正する
 ```
 
-5．urls.pyを更新する
+5. urls.pyを更新する
 ```
 urlpatternsに以下を追加 ※sampleをユーザ名に変更
 path('sample', views.sample, name='sample'),
