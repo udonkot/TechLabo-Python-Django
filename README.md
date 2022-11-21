@@ -26,7 +26,13 @@ git checkout develop
 ```
 cd C:{ クローン先のパス }\TechLabo-Python-Django\apps\venv\Scripts\
 activate.bat
+
 cd C:{ クローン先のパス }\TechLabo-Python-Django
+pip install -r requirements.txt
+
+「.env」ファイルを作成
+※ファイルの内容はセキュリティの関係でチャットのメッセージで送ります
+
 python manage.py runserver
 ```
 
