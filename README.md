@@ -13,10 +13,10 @@
 2. リポジトリのクローンを作成
 
 ```
-git clone https://github.com/udonkot/TechLabo-Java-SpringBoot.git
+git clone https://github.com/udonkot/TechLabo-Python-Django.git
 ```
 
-3. クローンしたフォルダに移動し、XXXブランチをチェックアウト　※検討中
+3. クローンしたフォルダに移動し、developブランチをチェックアウト
 ```
 cd TechLabo-Python-Django
 git checkout develop
@@ -30,7 +30,7 @@ cd C:\unit_study_meeting\TechLabo-Python-Django
 python manage.py runserver
 ```
 
-5. [localhost:8000/apps/index](http://localhost:8000/apps/index)にアクセスし、画面が表示されれば成功！
+5. [localhost:8000/apps/home](http://localhost:8000/apps/home)にアクセスし、画面が表示されれば成功！
 
 ## 3. 利用方法(初回：featureブランチ作成～作業用フォルダ作成)
 
@@ -67,7 +67,7 @@ TechLabo-Python-Django\apps\templates\apps\rooms
 以下htmlファイルを修正する
 ```
 TechLabo-Python-Django\apps\templates\apps\rooms\sidebar.html
-※aタグを追加する。href属性名は"/rooms/[ユーザ名]/home" 
+※aタグを追加する。href属性名は"/rooms/[ユーザ名]" 
 ```
 
 6. 「3．～5．」で作成、更新したファイルをfeatureブランチにコミット／プッシュする<br/>
