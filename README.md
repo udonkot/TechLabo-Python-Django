@@ -13,7 +13,7 @@
 2. リポジトリのクローンを作成
 
 ```
-git clone https://github.com/udonkot/TechLabo-Java-SpringBoot.git
+git clone https://github.com/udonkot/TechLabo-Python-Django.git
 ```
 
 3. クローンしたフォルダに移動し、developブランチをチェックアウト
