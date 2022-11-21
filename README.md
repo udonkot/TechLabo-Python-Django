@@ -72,14 +72,20 @@ TechLabo-Python-Django\apps\templates\apps\rooms
 ※main.htmlの"Template Room Main"を任意の値に修正する
 ```
 
-5. テンプレートファイルを更新する。<br/>
+5.urls.pyを更新する
+```
+urlpatternsに以下を追加 ※sampleをユーザ名に変更
+path('sample', views.sample, name='sample'),
+```
+
+6. sidebar.htmlを更新する。<br/>
 以下htmlファイルを修正する
 ```
 TechLabo-Python-Django\apps\templates\apps\rooms\sidebar.html
 ※aタグを追加する。href属性名は"/rooms/[ユーザ名]" 
 ```
 
-6. 「3．～5．」で作成、更新したファイルをfeatureブランチにコミット／プッシュする<br/>
+7. 「3．～5．」で作成、更新したファイルをfeatureブランチにコミット／プッシュする<br/>
 developブランチで作業していた場合はブランチを切り替えること
 
-7. プルリクエストを作成する。マージ先はdevelopブランチ
+8. プルリクエストを作成する。マージ先はdevelopブランチ
