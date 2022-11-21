@@ -82,7 +82,7 @@ TechLabo-Python-Django\apps\templates\apps\rooms\sidebar.html
 ※aタグを追加する。href属性名は"/rooms/[ユーザ名]" 
 ```
 
-7. 「3．～5．」で作成、更新したファイルをfeatureブランチにコミット／プッシュする<br/>
+7. 「3．～6．」で作成、更新したファイルをfeatureブランチにコミット／プッシュする<br/>
 developブランチで作業していた場合はブランチを切り替えること
 
 8. プルリクエストを作成する。マージ先はdevelopブランチ
