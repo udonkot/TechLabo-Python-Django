@@ -52,6 +52,9 @@ python manage.py runserver
 ```
 cd TechLabo-Java-SpringBoot
 git checkout [featureブランチ名]
+
+（チェックアウトできない場合、コミットを実行後にfeatureに直接pushする）
+git push origin develop:feature-XXX
 ```
 
 3. ユーザ向けのviewsを新規作成する。<br/>
