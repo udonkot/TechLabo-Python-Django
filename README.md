@@ -57,15 +57,13 @@ git checkout [featureブランチ名]
 git push origin develop:feature-XXX
 ```
 
-3. ユーザ向けのviewsを新規作成する。<br/>
-以下クラスファイルを参考に作成
+3. viewsを修正する。<br/>
 ```
 TechLabo-Python-Django\apps
 views.pyに自分の名前のメソッドを追加する（sampleメソッドを参考に）
 ```
 
 4. ユーザ向けのhtmlファイルを新規作成する。<br/>
-以下htmlファイルを参考に作成
 ```
 TechLabo-Python-Django\apps\templates\apps\rooms
 ※ユーザ名のフォルダ、main.htmlを作成する。
@@ -79,7 +77,6 @@ path('sample', views.sample, name='sample'),
 ```
 
 6. sidebar.htmlを更新する。<br/>
-以下htmlファイルを修正する
 ```
 TechLabo-Python-Django\apps\templates\apps\rooms\sidebar.html
 ※aタグを追加する。href属性名は"/rooms/[ユーザ名]" 
