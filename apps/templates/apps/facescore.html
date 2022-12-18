@@ -1,0 +1,225 @@
+{% extends 'apps/base.html' %}
+{% load mathfilters %}
+{% load static %}
+
+
+<!--
+{% for faces in detected_faces  %}
+
+  <ul>
+    <li>
+      faceId: {{ faces.face_id }}
+    </li>
+    <li>
+      smile: {{ faces.face_attributes.smile|mul:100 }}%
+    </li>
+    <li>
+      happines: {{ faces.face_attributes.emotion.happiness|mul:100 }}%
+    </li>
+  </ul>
+{% endfor %}
+-->
+
+
+
+{% block content %}
+Azure FaceAPI サンプル</br>
+6MB以内の画像ファイルがアップロード対象になります。<br>
+
+<div class=”row”>
+  <img src="{{ img.show }}" >
+
+
+  <form action="{% url 'facescore' %}" method="POST" enctype="multipart/form-data">
+  <!--
+        <input type="text" name="fileTitle" />
+        </br>
+  -->
+    <input type="file" name="uploadFile" />
+    {% csrf_token %}
+    </br>
+    <input type="submit" value="upload" />
+    </br>
+  </form>
+
+  {% if error %}
+    {{ error }}
+  {% endif %}
+  
+  {% if detected_faces|length > 0 %}
+    画像ファイルから{{ detected_faces|length }}件検出しました！！</br>
+    </br>
+  {% endif %}
+
+  {% for faces, faceImgData in detected_faces  %}
+    <legend>■結果{{ forloop.counter }}</legend>
+    <table border='1' class="table table-striped">
+      <thead class='thead-dark'>
+        <tr>
+        <th>項目名</th>
+        <th>結果</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>年齢</th>
+          <td> {{ faces.face_attributes.age }}</td>
+        </tr>
+        <tr>
+          <th>性別</th>
+          <td> {{ faces.face_attributes.gender }}</td>
+        </tr>
+        <tr>
+          <th>笑顔</th>
+          <td>{{ faces.face_attributes.smile|mul:100 }}%</td>
+        </tr>
+<!--
+        <tr>
+          <th>眼鏡</th>
+          <td> {{ faces.face_attributes.glasses }}</td>
+        </tr>
+        <tr>
+          <th>アクセサリー</th>
+          <td> {{ faces.face_attributes.accessories }}</td>
+        </tr>
+        <tr>
+          <th>顔の毛</th>
+          <td> {{ faces.face_attributes.facial_hair }}</td>
+        </tr>
+        <tr>
+          <th>髪</th>
+          <td>{{ faces.face_attributes.hair }}</td>
+        </tr>
+        <tr>
+          <th>メイク</th>
+          <td>{{ faces.face_attributes.makeup }}</td>
+        </tr>
+        <tr>
+          <th>頭の向き</th>
+          <td> {{ faces.face_attributes.head_pose }}</td>
+        </tr>
+        <tr>
+          <th>口の閉塞</th>
+          <td>{{ faces.face_attributes.occlusion }}</td>
+        </tr>
+-->
+        <tr>
+          <th>幸福度</th>
+          <td> {{ faces.face_attributes.emotion.happiness|mul:100 }}%</td>
+        </tr>
+        <tr>
+          <th>怒り度</th>
+          <td> {{ faces.face_attributes.emotion.anger|mul:100 }}%</td>
+        </tr>
+        <tr>
+          <th>悲しみ度</th>
+          <td> {{ faces.face_attributes.emotion.sadness|mul:100 }}%</td>
+        </tr>
+        <tr>
+          <th>驚き度</th>
+          <td> {{ faces.face_attributes.emotion.surprise|mul:100 }}%</td>
+        </tr>
+        <tr>
+          <th>恐怖度</th>
+          <td> {{ faces.face_attributes.emotion.fear|mul:100 }}%</td>
+        </tr>
+        <tr>
+          <th>軽蔑度</th>
+          <td> {{ faces.face_attributes.emotion.contempt|mul:100 }}%</td>
+        </tr>
+        <tr>
+          <th>嫌悪度</th>
+          <td> {{ faces.face_attributes.emotion.disgust|mul:100 }}%</td>
+        </tr>
+        <tr>
+          <th>中性度</th>
+          <td> {{ faces.face_attributes.emotion.neutral|mul:100 }}%</td>
+        </tr>
+        <tr>
+          <th>検出した顔</th>
+          <td><img src='data:image/png;base64,{{faceImgData}}' class='w-100'/></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </br>
+  {% endfor %}
+
+  {% if detected_faces|length > 0 %}
+    <legend>■サマリ</legend>
+    <table border='1' class="table table-striped">
+      <thead class='thead-dark'>
+        <tr>
+        <th>項目名</th>
+        <th>合計値</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>笑顔</th>
+          <td>{{ summary.smile|mul:100 }}%</td>
+        </tr>
+        <tr>
+          <th>幸福度</th>
+          <td> {{ summary.happiness|mul:100 }}%</td>
+        </tr>
+        <tr>
+          <th>怒り度</th>
+          <td> {{ summary.anger|mul:100 }}%</td>
+        </tr>
+        <tr>
+          <th>悲しみ度</th>
+          <td> {{ summary.sadness|mul:100 }}%</td>
+        </tr>
+        <tr>
+          <th>驚き度</th>
+          <td> {{ summary.surprise|mul:100 }}%</td>
+        </tr>
+        <tr>
+          <th>恐怖度</th>
+          <td> {{ summary.fear|mul:100 }}%</td>
+        </tr>
+        <tr>
+          <th>軽蔑度</th>
+          <td> {{ summary.contempt|mul:100 }}%</td>
+        </tr>
+        <tr>
+          <th>嫌悪度</th>
+          <td> {{ summary.disgust|mul:100 }}%</td>
+        </tr>
+        <tr>
+          <th>中性度</th>
+          <td> {{ summary.neutral|mul:100 }}%</td>
+        </tr>
+      </tbody>
+    </table>  
+  {% endif %}
+  {% if detected_faces|length > 0 %}
+    </br>
+    <legend>■スコア</legend>
+    <table border='1' class="table table-striped">
+      <thead class='thead-dark'>
+        <tr>
+        <th>項目名</th>
+        <th>結果</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>ポジティブスコア</th>
+          <td> {{ summary.positive }}</td>
+        </tr>
+        <tr>
+          <th>ネガティブスコア</th>
+          <td> -{{ summary.negative }}</td>
+        </tr>
+        <tr>
+          <th>トータルスコア</th>
+          <td> {{ summary.total }}</td>
+        </tr>
+      </tbody>
+    </table>  
+  {% endif %}
+
+</div>
+{% endblock%}
