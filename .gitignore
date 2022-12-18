@@ -1,4 +1,4 @@
 .env
 *.jpg
 *.png
-apps
+apps/__pycache__/
