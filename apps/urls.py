@@ -14,7 +14,8 @@ urlpatterns = [
     path('hazeyama', views.hazeyama, name='hazeyama'),
     path('kondo', view_kondo.kondo, name='kondo'),
     path('slackapi', view_slackapi.slackapi, name='slackapi'),
-    path('slackapi/reaction/init', view_slackapi.init, name='summary'),
+    path('slackapi/reaction/init', view_slackapi.init, name='init'),
+    path('slackapi/reaction/summary', view_slackapi.summary, name='summary'),
 
     # 勉強会で使用しないurls
     path('facescore', views.facescore, name='facescore'),

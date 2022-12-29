@@ -2,29 +2,63 @@
 <html>
 <body id="main">
   {% block body %}
-  <div>
-  <h2>SlackAPI検証 リアクション集計(ユーザ毎)</h2>
- モック表示</br>
+  <div class="container">
+    <h2>SlackAPI検証 リアクション集計(ユーザ毎)</h2>
+    モック表示</br>
 
-  <div class="input">
+    <div class="input">
+      <h3>■集計条件</h3>
+      <form action="{% url 'summary' %}" method="POST" >
+        <table class="table">
+          <tr>
+            <th>ユーザID</th>
+            <td><input type="text" name="userId"> {% csrf_token %}</td>
+          </tr>
+          <tr>
+            <th>集計月</th>
+            <td><input type="text" name="month"> {% csrf_token %}</td>
+          </tr>
+          </tbody>
+        </table>
+        <input type="submit" value="集計"/>
+      </form>
+    </div>
+    </br>
 
-    <h3>■集計条件</h3>
-      <table class="table">
-        <tr>
-          <th>ユーザID</th>
-          <td><input ></td>
-        </tr>
-        <tr>
-          <th>集計月</th>
-          <td><input ></td>
-        </tr>
-        </tbody>
-      </table>
-      <input type="submit" value="集計"/>
-  </div>
+    {% if responseList|length > 0 %}
   </br>
+  <legend>■結果{{ forloop.counter }}</legend>
+    <table border='1' class="table table-striped">
+      <thead class='thead-dark'>
+        <tr>
+        <th>順位</th>
+        <th>ユーザID</th>
+        <th>emoji名</th>
+        <th>emoji</th>
+        <th>回数</th>
+        </tr>
+      </thead>
+      <tbody>
 
-</div>
+
+　　  {% for response  in responseList  %}
+        <tr>
+          <td> {{ response.rank }}</td>
+          <td> {{ response.userId }}</td>
+          <td> {{ response.emojiName }}</td>
+          <td> {{ response.emoji }}</td>
+          <td> {{ response.cnt }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </br>
+  {% endif %}
+
+  </div>
+
+
+
 {% endblock %}
 
 </body>
