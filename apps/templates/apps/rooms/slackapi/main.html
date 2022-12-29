@@ -1,0 +1,27 @@
+{% extends "apps/layout.html" %}
+<html>
+  <body id="main">
+    {% block body %}
+    <div>
+      slackapi's Room Main
+      <h1>{{ message }}</h1>
+
+      <table>
+        <thead>
+        <tr>
+          <td>リンク</td>
+          <td>説明</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><a href="/apps/slackapi/reaction/init">SlackAPI検証 リアクション集計(ユーザ毎)</a></td>
+          <td>ユーザIDと集計月をパラメータに指定し集計する。</br>トップ10のリアクションしてくれたユーザとその回数を返す</td>
+        </tr>
+        </tbody>
+      </table>
+
+    </div>
+    {% endblock %}
+  </body>
+</html>
