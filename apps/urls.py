@@ -1,9 +1,7 @@
-from django.urls import path
+from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from . import views
-from apps.viewRoot.kondo import views as view_kondo
-from apps.viewRoot.slackapi import views as view_slackapi
 
 # Add your urls here.
 urlpatterns = [
@@ -12,10 +10,8 @@ urlpatterns = [
     path('sample', views.sample, name='sample'),
     path('okayasu', views.okayasu, name='okayasu'),
     path('hazeyama', views.hazeyama, name='hazeyama'),
-    path('kondo', view_kondo.kondo, name='kondo'),
-    path('slackapi', view_slackapi.slackapi, name='slackapi'),
-    path('slackapi/reaction/init', view_slackapi.init, name='init'),
-    path('slackapi/reaction/summary', view_slackapi.summary, name='summary'),
+    path('kondo', include('apps.kondo.urls'), name='kondoDir'),
+    path('slackapi', include('apps.slackapi.urls'), name='slackapiDir'),
 
     # 勉強会で使用しないurls
     path('facescore', views.facescore, name='facescore'),
