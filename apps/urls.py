@@ -11,6 +11,9 @@ urlpatterns = [
     path('okayasu', views.okayasu, name='okayasu'),
     path('hazeyama', views.hazeyama, name='hazeyama'),
 
+    # slack APIお試し
+    path('reactions', views.reactions, name='reactions'),
+
     # 勉強会で使用しないurls
     path('facescore', views.facescore, name='facescore'),    
     path('index', views.index, name='index')
