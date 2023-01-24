@@ -2,9 +2,40 @@
 <html>
 <body id="main">
     {% block body %}
-    <div>okayasu's Room Main
-      <h1>{{ message }}</h1>
+
+    {% if not response %}
+    <!--slackお試し-->
+    <div>okayasu's Room Main</div>
+    <div>
+      <h1>slack APIお試し</h1>
+	    <form action=http://localhost:8000/apps/reactions method="GET">
+        <label for="response">reactions</label>
+        <input type="submit" value="get">
     </div>
+
+    {% elif response %}
+    <div>
+      <h3>コメント: {{ response.comment }}</h3><br>
+    </div>
+    <div>
+      <h3>リアクション有りのメンバー</h3>
+    </div>
+    <div>
+      <table style="border-collapse: collapse; margin: auto;">
+        <thead>
+          <tr style="border: solid 1px white;"><th>名前</th></tr>
+        </thead>
+
+        <tbody>
+          {% for name in response.reaction_members_name %}
+          <tr style="border: solid 1px white;"><td>{{ name.display_name }}</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    {% endif %}
+
     {% endblock %}
 </body>
 </html>

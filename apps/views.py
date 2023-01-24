@@ -5,15 +5,18 @@ from django.shortcuts import render
 from PIL import Image
 
 from apps.models import Upload
-
 from apps.main import getFaceSample, showFaceLog
-
 from facescore.settings import MEDIA_ROOT
+
+# slack APIお試し
+from .business import slack_api
+
 
 # Create your views here.
 # 勉強会で使用するviews
 def home(request):
   return render(request, 'apps/body.html')
+
 
 def sample(request):
   context = {
@@ -21,17 +24,54 @@ def sample(request):
   }   
   return render(request, 'apps/rooms/sample/main.html', context)
 
+
 def okayasu(request):
   context = {
       'message': "Hello okayasu's Page!"
   }   
   return render(request, 'apps/rooms/okayasu/main.html', context)
 
+
 def hazeyama(request):
   context = {
       'message': "Hello hazeyama's Page!"
   }   
   return render(request, 'apps/rooms/hazeyama/main.html', context)
+
+
+# slack APIお試し
+def reactions(request):
+  # ユーザーリスト取得
+  users_list = slack_api.get_users_list()
+  print('>>>>>>>>>>>>>>>>>>>>')
+  print(users_list['members'])
+  names = [
+    {
+      'id': member['id'],
+      'display_name': member["profile"]['display_name']
+    }
+    for member in users_list['members']
+  ]
+
+  # レスポンス取得
+  reactions = slack_api.get_reactions()
+  comment = reactions["message"]["text"]
+  reaction_members_id = reactions["message"]["reactions"][0]["users"]
+  reaction_members_name = [
+    name
+    for name in names
+    if name["id"] in reaction_members_id 
+  ]
+
+  response = {
+    'comment': comment,
+    'reaction_members_name': reaction_members_name
+  }
+  context = {
+      'response': response
+  }
+  return render(request, 'apps/rooms/okayasu/main.html', context)
+
 
 # 勉強会で使用しないviews
 def index(request):
