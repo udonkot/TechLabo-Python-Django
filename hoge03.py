@@ -4,7 +4,7 @@ import datetime
 import sys
 
 # 基本設定
-TOKEN = "xoxb-83072119685-2963173195104-A52Wuo912tc1IeN9bBnPEBU2"
+TOKEN = "xoxb-"
 url = "https://slack.com/api/conversations.history"
 name_url = "https://slack.com/api/users.info"
 header={
