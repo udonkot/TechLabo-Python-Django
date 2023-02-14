@@ -1,0 +1,26 @@
+{% extends "apps/layout.html" %}
+<html>
+  <body id="main">
+    {% block body %}
+    <div>
+      azure's Room Main
+      <h1>{{ message }}</h1>
+
+      <table>
+        <thead>
+          <tr>
+            <td>リンク</td>
+            <td>説明</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="/apps/azure/facescore/init">Azure Face API検証</a></td>
+            <td>アップロードされた写真から顔を識別してスコアリングする</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    {% endblock %}
+  </body>
+</html>
