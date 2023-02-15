@@ -2,7 +2,7 @@ import imp
 
 
 import os
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 
 STATICFILES_DIRS = (
     [
