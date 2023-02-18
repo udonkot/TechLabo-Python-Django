@@ -135,7 +135,7 @@ CSRF_TRUSTED_ORIGINS = [
     'https://azurefaceapiservices.azurewebsites.net'
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'project_static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIRS = (
     [
