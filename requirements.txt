@@ -5,3 +5,4 @@ azure.cognitiveservices.vision.face
 msrestazure
 requests
 python-dotenv
+whitenoise

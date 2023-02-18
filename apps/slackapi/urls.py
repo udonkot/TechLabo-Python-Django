@@ -6,8 +6,8 @@ from . import views as view_slackapi
 # Add your urls here.
 urlpatterns = [
   path('', view_slackapi.slackapi, name='slackapi'),
-  path('/reaction/init', view_slackapi.init, name='init'),
-  path('/reaction/summary', view_slackapi.summary, name='summary'),
+  path('reaction/init', view_slackapi.init, name='init'),
+  path('reaction/summary', view_slackapi.summary, name='summary'),
 ]
 
 if settings.DEBUG:
