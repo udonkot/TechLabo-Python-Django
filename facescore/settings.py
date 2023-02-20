@@ -29,6 +29,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'localhost',
     'azurefaceapiservices.azurewebsites.net',
+    'dxservice-techlabo-python-django.azurewebsites.net',
 ]
 
 
