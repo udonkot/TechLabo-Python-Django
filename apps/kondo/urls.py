@@ -5,11 +5,5 @@ from . import views as view_kondo
 
 # Add your urls here.
 urlpatterns = [
-    path('', view_kondo.kondo, name='kondo'),
+    path('index', view_kondo.kondo, name='kondoRoot'),
 ]
-
-if settings.DEBUG:
-  urlpatterns += static(
-      settings.MEDIA_URL,
-      document_root = settings.MEDIA_ROOT
-  )

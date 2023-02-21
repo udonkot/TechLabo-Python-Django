@@ -5,7 +5,7 @@ from . import views as view_azure
 
 # Add your urls here.
 urlpatterns = [
-  path('', view_azure.azure, name='azureHome'),
+  path('index', view_azure.azure, name='azureRoot'),
   path('facescore/', include('apps.azure.facescore.urls'), name='facescoreDir'),
 ]
 
