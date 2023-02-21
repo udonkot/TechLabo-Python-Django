@@ -11,9 +11,9 @@ urlpatterns = [
     path('sample', views.sample, name='sample'),
     path('okayasu', views.okayasu, name='okayasu'),
     path('hazeyama', views.hazeyama, name='hazeyama'),
-    path('kondo', include('apps.kondo.urls'), name='kondoDir'),
-    path('slackapi', include('apps.slackapi.urls'), name='slackapiDir'),
-    path('azure', include('apps.azure.urls'), name='azureDir'),
+    path('kondo/', include('apps.kondo.urls'), name='kondoDir'),
+    path('slackapi/', include('apps.slackapi.urls'), name='slackapiDir'),
+    path('azure/', include('apps.azure.urls'), name='azureDir'),
 
     # 勉強会で使用しないurls
     path('index', views.index, name='index')
