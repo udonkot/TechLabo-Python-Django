@@ -2,6 +2,31 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+import configparser
+
+from pathlib import Path
+
+"""
+コンフィグファイル
+"""
+BASE_DIR = Path(__file__).resolve().parent
+CONFIG_FILE = os.path.join(BASE_DIR, 'database', 'config', 'config.ini')
+
+
+"""
+環境変数を設定
+"""
+def set_environ(config_file):
+    config = configparser.ConfigParser()
+    config.read(config_file, "UTF-8")
+
+    os.environ["log_file_app"] = config.get("log_setting", "log_file_app")
+    os.environ["log_file_django"] = config.get("log_setting", "log_file_django")
+
+    os.environ["host"] = config.get("database_settings", "host")
+    os.environ["user"] = config.get("database_settings", "user")
+    os.environ["password"] = config.get("database_settings", "password")
+    os.environ["database"] = config.get("database_settings", "database")
 
 
 def main():
@@ -19,4 +44,5 @@ def main():
 
 
 if __name__ == "__main__":
+    set_environ(CONFIG_FILE)
     main()
