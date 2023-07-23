@@ -12,7 +12,7 @@ from psycopg2.extras import DictCursor
 def select_data():
     logger = logging.getLogger("app")
 
-    sql = "SELECT * FROM data"
+    sql = "SELECT * FROM sample_table;"
 
     result = {
         "result": True,
