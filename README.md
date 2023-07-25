@@ -1,88 +1,112 @@
-# TechLabo-Java-Django
+# TechLabo-Python-Django
 
-## 1. 前提条件
+## postgres_webapp (windows版)
+
+### 1. 前提条件
 以下がローカルPCにインストールされていること
-
-- Python 3.10.1
+- Python(version 3以上)
+- VSCode 
 - Git
-- IDE
-  - VSCode 
 
-## 2. 実行方法
-1. コマンドプロンプトを起動
-2. リポジトリのクローンを作成
+### 2. インストール
+1. githubに移動しブランチを作成
 
+https://github.com/udonkot/TechLabo-Python-Django
+
+「branches」
+「New branch」
+New branch name: feature-PostgresWebApp-{名字}
+Source: feature-PostgresWebApp-okayasu
+「Create new branch」
+
+2. リポジトリ用のフォルダを作成、フォルダに移動（場所、名前は任意）
+
+3. クローンを作成（Git Bash, VScode, コマンドプロンプトなどツールは任意）
 ```
 git clone https://github.com/udonkot/TechLabo-Python-Django.git
 ```
 
-3. クローンしたフォルダに移動し、developブランチをチェックアウト
+4. 作成したブランチをチェックアウト
 ```
-cd TechLabo-Python-Django
-git checkout develop
+git checkout {作成したブランチ名}
 ```
 
-4. 以下コマンドを実行
-```
-cd C:{ クローン先のパス }\TechLabo-Python-Django\apps\venv\Scripts\
-activate.bat
+### ３．アプリ起動
 
-cd C:{ クローン先のパス }\TechLabo-Python-Django
+1. Python仮想環境を構築
+ターミナル(（VScode, コマンドプロンプト)を開き、以下コマンドを実行
+```
+cd C:\{作成したリポジトリ}\TechLabo-Python-Django\apps\postgres_webapp\windows\application
+python3 -m venv .venv
+
+C:\{作成したリポジトリ}\TechLabo-Python-Django\apps\postgres_webapp\windows\application\.venv\Scripts\activate.bat
+
+pip install --upgrade pip
 pip install -r requirements.txt
-
-「.env」ファイルを作成
-※ファイルの内容はセキュリティの関係でチャットのメッセージで送ります
-
-python manage.py runserver
 ```
 
-5. [localhost:8000/apps/home](http://localhost:8000/apps/home)にアクセスし、画面が表示されれば成功！
-
-## 3. 利用方法(初回：featureブランチ作成～作業用フォルダ作成)
-
-1. featureブランチを作成する。GitHub上で操作するとやりやすい
-
-![img.png](img/readme/img01_createbranch.png)
-
+別のウィンドウでターミナルを開き、以下コマンドを実行
 ```
-ブランチ名は「feature-[ユーザ名]」
-```
+cd C:\{作成したリポジトリ}\TechLabo-Python-Django\apps\postgres_webapp\windows\database
+python3 -m venv .venv
 
-2. 作成したfeatureブランチをローカルリポジトリにチェックアウトする。
-```
-cd TechLabo-Java-SpringBoot
-git checkout [featureブランチ名]
+C:\{作成したリポジトリ}\TechLabo-Python-Django\apps\postgres_webapp\windows\database\.venv\Scripts\activate.bat
 
-（チェックアウトできない場合、コミットを実行後にfeatureに直接pushする）
-git push origin develop:feature-XXX
+pip install --upgrade pip
+pip install -r requirements.txt
 ```
 
-3. viewsを修正する。<br/>
+2. Djangoアプリケーションを起動
+ターミナル#１で以下コマンドを実行
 ```
-TechLabo-Python-Django\apps
-views.pyに自分の名前のメソッドを追加する（sampleメソッドを参考に）
-```
-
-4. ユーザ向けのhtmlファイルを新規作成する。<br/>
-```
-TechLabo-Python-Django\apps\templates\apps\rooms
-※ユーザ名のフォルダ、main.htmlを作成する。
-※main.htmlの"Template Room Main"を任意の値に修正する
+python manage.py runserver 127.0.0.1:8000
 ```
 
-5. urls.pyを更新する
+ターミナル#２で以下コマンドを実行
 ```
-urlpatternsに以下を追加 ※sampleをユーザ名に変更
-path('sample', views.sample, name='sample'),
-```
-
-6. sidebar.htmlを更新する。<br/>
-```
-TechLabo-Python-Django\apps\templates\apps\rooms\sidebar.html
-※aタグを追加する。href属性名は"/rooms/[ユーザ名]" 
+python manage.py runserver 127.0.0.1:8001
 ```
 
-7. 「3．～6．」で作成、更新したファイルをfeatureブランチにコミット／プッシュする<br/>
-developブランチで作業していた場合はブランチを切り替えること
+3. ブラウザからアクセス
+[http://127.0.0.1:8000/application/get/data/](http://127.0.0.1:8000/application/get/data/)にアクセスし、画面が表示されれば成功！
 
-8. プルリクエストを作成する。マージ先はdevelopブランチ
+### ４. ワーク
+
+---
+
+# TechLabo-Python-Django
+
+## postgres_webapp (docker版)
+
+### 1. 前提条件
+コンテナ(Docker)を起動させる環境が構築されていること
+
+以下がローカルPCにインストールされていること
+- Git
+
+### 2. インストール
+1. githubに移動しブランチを作成
+
+https://github.com/udonkot/TechLabo-Python-Django
+
+「branches」
+「New branch」
+New branch name: feature-PostgresWebApp-{名字}
+Source: feature-PostgresWebApp-okayasu
+「Create new branch」
+
+2. リポジトリ用のフォルダを作成、フォルダに移動（場所、名前は任意）
+
+3. クローンを作成（Git Bash, VScode, コマンドプロンプトなどツールは任意）
+```
+git clone https://github.com/udonkot/TechLabo-Python-Django.git
+```
+
+4. 作成したブランチをチェックアウト
+```
+git checkout {作成したブランチ名}
+```
+
+5. チェックアウトした資材をLinux環境へ移動させる
+
+### ５. ワーク
