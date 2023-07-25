@@ -74,8 +74,6 @@ python manage.py runserver 127.0.0.1:8001
 
 ---
 
-# TechLabo-Python-Django
-
 ## postgres_webapp (docker版)
 
 ### 1. 前提条件
@@ -109,4 +107,4 @@ git checkout {作成したブランチ名}
 
 5. チェックアウトした資材をLinux環境へ移動させる
 
-### ５. ワーク
+### ３. ワーク
