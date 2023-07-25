@@ -70,6 +70,8 @@ python manage.py runserver 127.0.0.1:8001
 3. ブラウザからアクセス
 [http://127.0.0.1:8000/application/get/data/](http://127.0.0.1:8000/application/get/data/)にアクセスし、画面が表示されれば成功！
 
+![Alt text](image.png)
+
 ### ４. ワーク
 
 ---
