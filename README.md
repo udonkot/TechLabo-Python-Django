@@ -56,7 +56,37 @@ pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-2. Djangoアプリケーションを起動
+2. 設定ファイルを作成
+以下ファイルを作成
+C:\{作成したリポジトリ}\TechLabo-Python-Django\apps\postgres_webapp\windows\application\application\config\config.ini
+
+ファイルの中身
+```
+;ログの設定
+[log_setting]
+log_file_app=C:\\unit_github\\TechLabo-Python-Django\\apps\\postgres_webapp\\windows\\application\\application\\logs\\app.log
+log_file_django=C:\\unit_github\\TechLabo-Python-Django\\apps\\postgres_webapp\\windows\\application\\application\\logs\\django.log
+
+;インタフェース設定
+[if_setting]
+ip_database=127.0.0.1
+port_database=8001
+path_database_data=database/get/data/
+path_database_reg_data=database/register/data/
+```
+
+以下ファイルを作成
+C:\{作成したリポジトリ}\TechLabo-Python-Django\apps\postgres_webapp\windows\database\database\config\config.ini
+
+ファイルの中身
+```
+;ログの設定
+[log_setting]
+log_file_app=C:\\unit_github\\TechLabo-Python-Django\\apps\\postgres_webapp\\windows\\database\\database\\logs\\app.log
+log_file_django=C:\\unit_github\\TechLabo-Python-Django\\apps\\postgres_webapp\\windows\\database\\database\\logs\\django.log
+```
+
+3. Djangoアプリケーションを起動
 ターミナル#１で以下コマンドを実行
 ```
 python manage.py runserver 127.0.0.1:8000
@@ -67,12 +97,27 @@ python manage.py runserver 127.0.0.1:8000
 python manage.py runserver 127.0.0.1:8001
 ```
 
-3. ブラウザからアクセス
+4. ブラウザからアクセス
 [http://127.0.0.1:8000/application/get/data/](http://127.0.0.1:8000/application/get/data/)にアクセスし、画面が表示されれば成功！
 
-![Alt text](image.png)
+![画面イメージ](screen_image.PNG)
 
 ### ４. ワーク
+1. Djangoの概要の説明を受ける
+
+2. DBへデータ登録するの機能を実装する
+
+- 修正対象のソースは以下
+TechLabo-Python-Django\apps\postgres_webapp\windows\database\database\query.py
+⇒メソッド：「insert_data」に登録処理を実装
+※『models.py　データ登録　手順』で検索
+
+TechLabo-Python-Django\apps\postgres_webapp\windows\database\database\urls.py
+⇒URL"database/register/data/"を追加する
+
+3. DBにカラムを追加し、追加した情報を画面のテーブルに表示させる機能を実装する
+
+説明を作成中...
 
 ---
 
@@ -110,3 +155,20 @@ git checkout {作成したブランチ名}
 5. チェックアウトした資材をLinux環境へ移動させる
 
 ### ３. ワーク
+1. コンテナの起動テスト 
+
+- ディレクトリ移動
+cd /home/shinji/TechLabo-Python-Django/apps/postgres_webapp/docker/application
+- Dockerfileからイメージを作成する（コンテナ名とタグは自由）
+- コンテナを起動する
+- コンテナを停止する
+- コンテナを削除する
+- イメージを削除する
+
+2. コンテナの構成について説明を受ける
+
+口頭で説明
+
+3. コンテナ間通信を実装
+
+作成中

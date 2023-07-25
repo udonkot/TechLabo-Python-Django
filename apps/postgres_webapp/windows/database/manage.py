@@ -23,11 +23,6 @@ def set_environ(config_file):
     os.environ["log_file_app"] = config.get("log_setting", "log_file_app")
     os.environ["log_file_django"] = config.get("log_setting", "log_file_django")
 
-    os.environ["host"] = config.get("database_settings", "host")
-    os.environ["user"] = config.get("database_settings", "user")
-    os.environ["password"] = config.get("database_settings", "password")
-    os.environ["database"] = config.get("database_settings", "database")
-
 
 def main():
     """Run administrative tasks."""

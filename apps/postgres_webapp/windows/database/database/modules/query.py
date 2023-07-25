@@ -51,9 +51,7 @@ def insert_data(data):
     try:
         logger.info("Start insert data.")
 
-        sample_table = models.SapmleTable(sample_data=data)
-        sample_table.save()
-        logger.debug(f"result: {result}")
+        # TODO レコードを追加する処理を実装
 
         logger.info("End insert data.")
 
