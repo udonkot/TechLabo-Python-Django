@@ -18,6 +18,10 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
-    path("database/data/", views.data),
+    # 未使用
+    # path("admin/", admin.site.urls),
+
+    # URLは以下に追加する
+    path("database/get/data/", views.select_data),
+    path("database/register/data/", views.insert_data),
 ]

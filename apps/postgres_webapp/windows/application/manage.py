@@ -26,6 +26,7 @@ def set_environ(config_file):
     os.environ["ip_database"] = config.get("if_setting", "ip_database")
     os.environ["port_database"] = config.get("if_setting", "port_database")
     os.environ["path_database_data"] = config.get("if_setting", "path_database_data")
+    os.environ["path_database_reg_data"] = config.get("if_setting", "path_database_reg_data")
 
 
 def main():

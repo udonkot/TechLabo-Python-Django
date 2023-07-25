@@ -5,6 +5,12 @@
         <title>PostgresWebApp</title>
     </head>
     <body>
+        <!-- 入力値を送信 -->
+        <form action="http://127.0.0.1:8000/application/register/data/" method="POST">
+            {% csrf_token %}
+            <input class="favorite styled" type="submit" value="Register">
+            <input class="favorite styled" type="text" name="data" value="data-">
+        </form>
         <!-- 取得した値をテーブル表示 -->
         <table>
             <thead>

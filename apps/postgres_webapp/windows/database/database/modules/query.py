@@ -1,42 +1,37 @@
 import logging
-import os
-import psycopg2
 import traceback
 
-from psycopg2.extras import DictCursor
+from .. import models
 
+# ロガーの設定
+logger = logging.getLogger("app")
+
+# 返却する結果
+result = {
+    "result": True,
+    "data": None
+}
 
 '''
-「data」テーブルからレコードを全件取得
+レコードを取得する
 '''
 def select_data():
-    logger = logging.getLogger("app")
-
-    sql = "SELECT * FROM data;"
-
-    result = {
-        "result": True,
-        "data": None
-    }
-
     try:
         logger.info("Start select data.")
 
-        connection = _get_connection()
-        with connection:
-            with connection.cursor(cursor_factory=DictCursor) as cursor:
-                cursor.execute(sql)
-                rows = cursor.fetchall()
-                logger.debug(f"rows: {rows}")
-            connection.commit()
+        sample_table = models.SapmleTable.objects.all()
+        logger.debug(f"sample_table: {sample_table}")
 
-        result["data"] = [
-            rows[row][0] for row in range(len(rows))
-        ]
+        recodes = list()
+        for recode in sample_table:
+            logger.debug(f"recode: {recode}")
+            recodes.append(str(recode))
+
+        result["data"] = recodes
         logger.debug(f"result: {result}")
 
         logger.info("End select data.")
- 
+
         return str(result)
 
     except Exception:
@@ -50,14 +45,56 @@ def select_data():
 
 
 '''
-「postgres」データベースの接続を取得
+レコードを追加する
 '''
-def _get_connection():
-    connection = psycopg2.connect(
-        host=os.environ.get("host"),
-        user=os.environ.get("user"),
-        password=os.environ.get("password"),
-        database=os.environ.get("database"),
-    )
+def insert_data(data):
+    try:
+        logger.info("Start insert data.")
 
-    return connection
+        sample_table = models.SapmleTable(sample_data=data)
+        sample_table.save()
+        logger.debug(f"result: {result}")
+
+        logger.info("End insert data.")
+
+        return result
+
+    except Exception:
+        logger.error("Exception occored.")
+        logger.error(traceback.format_exc())
+
+        result["result"] = False
+        logger.debug(f"result: {result}")
+
+
+'''
+レコードを変更する
+'''
+def update_data():
+    try:
+        logger.info("Start update data.")
+
+        # TODO レコードを更新する処理を実装
+
+        logger.info("End update data.")
+
+    except Exception:
+        logger.error("Exception occored.")
+        logger.error(traceback.format_exc())
+
+
+'''
+レコードを削除する
+'''
+def delete_data():
+    try:
+
+        logger.info("Start delete data.")
+
+        # TODO レコードを削除する処理を実装
+
+        logger.info("End delete data.")
+
+    except Exception:
+        logger.error("Exception occored.")
+        logger.error(traceback.format_exc())
