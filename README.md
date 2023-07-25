@@ -14,9 +14,13 @@
 https://github.com/udonkot/TechLabo-Python-Django
 
 「branches」
+
 「New branch」
+
 New branch name: feature-PostgresWebApp-{名字}
+
 Source: feature-PostgresWebApp-okayasu
+
 「Create new branch」
 
 2. リポジトリ用のフォルダを作成、フォルダに移動（場所、名前は任意）
