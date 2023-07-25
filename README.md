@@ -64,12 +64,12 @@ pip install -r requirements.txt
 以下ファイルを作成
 C:\{作成したリポジトリ}\TechLabo-Python-Django\apps\postgres_webapp\windows\application\application\config\config.ini
 
-ファイルの中身
+ファイルの中身 ※パスを各自の環境に合わせて変更する
 ```
 ;ログの設定
 [log_setting]
-log_file_app=C:\\unit_github\\TechLabo-Python-Django\\apps\\postgres_webapp\\windows\\application\\application\\logs\\app.log
-log_file_django=C:\\unit_github\\TechLabo-Python-Django\\apps\\postgres_webapp\\windows\\application\\application\\logs\\django.log
+log_file_app=C:\\{作成したリポジトリ}\\TechLabo-Python-Django\\apps\\postgres_webapp\\windows\\application\\application\\logs\\app.log
+log_file_django=C:\\{作成したリポジトリ}\\TechLabo-Python-Django\\apps\\postgres_webapp\\windows\\application\\application\\logs\\django.log
 
 ;インタフェース設定
 [if_setting]
@@ -82,12 +82,12 @@ path_database_reg_data=database/register/data/
 以下ファイルを作成
 C:\{作成したリポジトリ}\TechLabo-Python-Django\apps\postgres_webapp\windows\database\database\config\config.ini
 
-ファイルの中身
+ファイルの中身 ※パスを各自の環境に合わせて変更する 
 ```
 ;ログの設定
 [log_setting]
-log_file_app=C:\\unit_github\\TechLabo-Python-Django\\apps\\postgres_webapp\\windows\\database\\database\\logs\\app.log
-log_file_django=C:\\unit_github\\TechLabo-Python-Django\\apps\\postgres_webapp\\windows\\database\\database\\logs\\django.log
+log_file_app=C:\\{作成したリポジトリ}\\TechLabo-Python-Django\\apps\\postgres_webapp\\windows\\database\\database\\logs\\app.log
+log_file_django=C:\\{作成したリポジトリ}\\TechLabo-Python-Django\\apps\\postgres_webapp\\windows\\database\\database\\logs\\django.log
 ```
 
 3. Djangoアプリケーションを起動
