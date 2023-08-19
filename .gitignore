@@ -6,4 +6,5 @@ __pycache__/
 *$py.class
 media/uploads/aaa.jpg
 ./db.sqlite3
-./apps/okayasu/logs/*.log
+./apps/okayasu/logs/app.log
+./apps/okayasu/logs/django.log
