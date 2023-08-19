@@ -30,6 +30,7 @@ ALLOWED_HOSTS = [
     'localhost',
     'azurefaceapiservices.azurewebsites.net',
     'dxservice-techlabo-python-django.azurewebsites.net',
+    '127.0.0.1',
 ]
 
 
@@ -42,8 +43,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apps',
     'mathfilters',
+    'apps',
+
+    # ユーザ用アプリケーション
+    'apps.okayasu',
 ]
 
 MIDDLEWARE = [
@@ -85,7 +89,13 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    },
+
+    # ユーザ用データベース
+    'okayasu_sqlite': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'apps/' 'okayasu/' 'db.sqlite3',
+    },
 }
 
 
@@ -147,5 +157,64 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 
+# ユーザの設定
+
+USER = 'okayasu'
+os.environ['USER'] =USER
 
 
+# ロガーの設定
+
+LOGS_DIR = os.path.join(BASE_DIR, 'apps', USER, 'logs')
+# 'app.log'にはloggerの関数のメッセージが出力される
+# 'django.log'にはフレームワーク関連のログが出力される
+LOG_FILE_APP = os.path.join(LOGS_DIR, 'app.log')
+LOG_FILE_DJANGO = os.path.join(LOGS_DIR, 'django.log')
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    # ログ出力フォーマットの設定
+    'formatters': {
+        'production': {
+            # 'format': '%(asctime)s [%(levelname)s] %(process)d %(thread)d '
+            #           '%(pathname)s:%(lineno)d %(message)s'
+            'format': '%(asctime)s [%(levelname)s] '
+                      '%(pathname)s:%(lineno)d %(funcName)s %(message)s'
+        },
+    },
+    # ハンドラの設定
+    'handlers': {
+        'file.app': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            #'filename': '/var/log/{}/app.log'.format(PROJECT_NAME),
+            'filename': LOG_FILE_APP,
+            'formatter': 'production',
+        },
+        'file.django': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            #'filename': '/var/log/{}/app.log'.format(PROJECT_NAME),
+            'filename': LOG_FILE_DJANGO,
+            'formatter': 'production',
+        },
+    },
+    # ロガーの設定
+    'loggers': {
+        # 自分で追加したアプリケーション全般のログを拾うロガー
+        'app': {
+            'handlers': ['file.app'],
+            'level': 'DEBUG',
+            'propagate': True,
+            # 独自のロガークラス
+            'logger_class': 'apps.python_learning.logging.logger.CustomLogger',
+        },
+        # Django自身が出力するログ全般を拾うロガー
+        'django': {
+            'handlers': ['file.django'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+    },
+}
