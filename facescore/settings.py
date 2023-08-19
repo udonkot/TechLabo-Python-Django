@@ -159,13 +159,15 @@ CSRF_TRUSTED_ORIGINS = [
 
 # ユーザの設定
 
-USER = 'okayasu'
-os.environ['USER'] =USER
+from dotenv import load_dotenv
+load_dotenv()
+APP = os.getenv('APP')
+os.environ['APP'] = APP
 
 
 # ロガーの設定
 
-LOGS_DIR = os.path.join(BASE_DIR, 'apps', USER, 'logs')
+LOGS_DIR = os.path.join(BASE_DIR, 'apps', APP, 'logs')
 # 'app.log'にはloggerの関数のメッセージが出力される
 # 'django.log'にはフレームワーク関連のログが出力される
 LOG_FILE_APP = os.path.join(LOGS_DIR, 'app.log')
