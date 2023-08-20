@@ -8,30 +8,32 @@ from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
 from django.shortcuts import redirect
 
-from apps.okayasu import models
+from . import models
 from apps.python_library.logging.logger import logger
 from apps.python_library.request import request as python_library_requset
 from apps.python_library.query import query
 
+APP = os.environ.get('APP')
 RENDER_TEMPLATE = {
-   'okayasu_page': 'apps/rooms/okayasu/page.html',
-   'data': 'apps/rooms/okayasu/data.html',
-   'error': 'apps/rooms/okayasu/error.html',
+   'user_page': f'apps/rooms/{APP}/user_page.html',
+   'sample_data': f'apps/rooms/{APP}/sample_data.html',
+   'error': f'apps/rooms/{APP}/error.html',
 }
 # 上手く動作できていないためコメントアウト
 # REDIRECT_URL = {
 #    'data_request': ('data/', 'data_request'),
 # }
 
+
 '''
 ユーザ用のroomへ
 '''
-def okayasu_page(request):
+def user_page(request):
     context = {
         'message': "Hello user's Page!"
     }
     logger.debug('context=%s', context)
-    return render(request, RENDER_TEMPLATE['okayasu_page'], context)
+    return render(request, RENDER_TEMPLATE['user_page'], context)
 
 
 '''
@@ -61,7 +63,7 @@ def data_request(request):
                 logger.info('Success')
 
                 logger.info('End')
-                return render(request, RENDER_TEMPLATE['data'], context)
+                return render(request, RENDER_TEMPLATE['sample_data'], context)
             else:
                 logger.warning('Falure')
 
@@ -88,8 +90,10 @@ def data_request(request):
                 logger.info('Success')
 
                 logger.info('End')
+
                 # 上手く動作できていないためコメントアウト
-                #return redirect('okayasu:' + REDIRECT_URL['data_request'])
+                #return redirect('user_page:' + REDIRECT_URL['data_request'])
+
                 current_path = request.path
                 return redirect(current_path)
             else:

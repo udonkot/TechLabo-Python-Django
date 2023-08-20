@@ -4,11 +4,10 @@ from django.conf.urls.static import static
 from . import views
 
 # Add your urls here.
-app_name = 'okayasu'
 
 urlpatterns = [
     # ユーザページ表示
-    path('', views.okayasu_page),
+    path('', views.user_page),
 
     # data取得
     path('data/', views.data_request, name='data_request'),
