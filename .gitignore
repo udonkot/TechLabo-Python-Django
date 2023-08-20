@@ -6,4 +6,4 @@ __pycache__/
 *$py.class
 media/uploads/aaa.jpg
 ./db.sqlite3
-./apps/**/logs/*.log
+apps/**/logs/*.log
