@@ -5,3 +5,6 @@ __pycache__/
 *.py[cod]
 *$py.class
 media/uploads/aaa.jpg
+./db.sqlite3
+apps/**/logs/*.log
+apps/**/db.sqlite3
