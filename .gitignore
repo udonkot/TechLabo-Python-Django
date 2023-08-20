@@ -7,3 +7,4 @@ __pycache__/
 media/uploads/aaa.jpg
 ./db.sqlite3
 apps/**/logs/*.log
+apps/**/db.sqlite3
