@@ -5,7 +5,7 @@ from . import views
 
 # Add your urls here.
 urlpatterns = [
-    # アプリ用のurls
+    # アプリ用のURL
     path('', views.home, name='home'),
     path('home', views.home, name='home'),
     path('sample', views.sample, name='sample'),
@@ -15,14 +15,7 @@ urlpatterns = [
 
     # ユーザ用のURL
     # apps/{ユーザ名}配下のurls.pyへリクエストを転送する
-    #path('irito/', include('apps.irito.urls')),
     path('okayasu/', include('apps.okayasu.urls')),
-    #path('kondo/', include('apps.kondo.urls')),
-    #path('kita/', include('apps.kita.urls')),
-    #path('hazama/', include('apps.hazama.urls')),
-    #path('hazeyama/', include('apps.hazeyama.urls')),
-    #path('matsuura/', include('apps.matsuura.urls')),
-    #path('yamane/', include('apps.yamane.urls')),
 
     #path('hazeyama/', views.hazeyama, name='hazeyama'),
     path('kondo/', include('apps.kondo.urls'), name='kondoDir'),
