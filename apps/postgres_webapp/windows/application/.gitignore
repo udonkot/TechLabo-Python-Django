@@ -1,3 +1,0 @@
-application/logs/*.log
-application/config/config.ini
-.venv/*
