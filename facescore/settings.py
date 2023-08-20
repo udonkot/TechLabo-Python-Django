@@ -161,7 +161,7 @@ CSRF_TRUSTED_ORIGINS = [
 
 from dotenv import load_dotenv
 load_dotenv()
-APP = os.getenv('APP')
+APP = os.getenv('LAUNCH_APP')
 os.environ['APP'] = APP
 
 
