@@ -1,12 +1,23 @@
-<!DOCTYPE html>
+{% extends "apps/layout.html" %}
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>PostgresWebApp[ERROR]</title>
-    </head>
-    <body>
-        <!-- エラーメッセージを表示 -->
-        <p style="font-weight: bold";>ERROR</p>
-        <p>{{ message }}</p>
-    </body>
+<body id="main">
+    {% block body %}
+        <div>
+            <h1>ERROR</h1>
+        </div>
+
+        <div>
+            <!-- エラーメッセージを表示 -->
+            <p>{{ message }}</p>
+        </div>
+
+        <div>
+            <!-- 戻る -->
+            <form action="http://127.0.0.1:8000/apps/okayasu/data/" method="GET">
+                {% csrf_token %}
+                <input class="favorite styled" type="submit" value="Returen">
+            </form>
+        </div>
+        {% endblock %}
+</body>
 </html>

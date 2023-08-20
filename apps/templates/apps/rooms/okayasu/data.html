@@ -1,23 +1,23 @@
-<!DOCTYPE html>
+{% extends "apps/layout.html" %}
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>PostgresWebApp</title>
-    </head>
-    <body>
+<body id="main">
+    {% block body %}
+    <div>
+      <h1>sample data</h1>
+    </div>
+
+    <div>
         <!-- 入力値を送信 -->
         <form action="http://127.0.0.1:8000/apps/okayasu/data/" method="POST">
             {% csrf_token %}
             <input class="favorite styled" type="submit" value="Register">
             <input class="favorite styled" type="text" name="data" value="data-">
         </form>
+    </div>
+
+    <div>
         <!-- 取得した値をテーブル表示 -->
         <table>
-            <thead>
-                <tr>
-                    <th colspan="2">SAMPLE DATA</th>
-                </tr>
-            </thead>
             <tbody>
                 <tr>
                     <td>No.</td>
@@ -31,5 +31,7 @@
                 {% endfor %}
             </tbody>
         </table>
-    </body>
+    </div>
+    {% endblock %}
+</body>
 </html>
