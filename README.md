@@ -21,9 +21,11 @@ githubを別タグで開く
 https://github.com/udonkot/TechLabo-Python-Django
 ```
 
-プルダウン「master」 > View all branches > New branch
+以下の操作を行う
 
-branch name 「feature-webapp-{ユーザ名}」 > source 「feature-webapp-sample」 > Create new branch
+　プルダウン「master」 > View all branches > New branch
+
+　branch name 「feature-webapp-{ユーザ名}」 > source 「feature-webapp-sample」 > Create new branch
 
 #### 2. ローカルリポジトリ用のフォルダを作成
 
