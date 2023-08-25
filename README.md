@@ -2,7 +2,7 @@
 
 ## Python学習用アプリ
 
-### 1. 前提条件
+### 1. 事前準備
 以下がローカルPCにインストールされていること
 - Python (version 3以上) [URL](https://www.python.org/downloads/)
 - VSCode (Extentions：Pylance, Git Graphをインストールしておく) [URL](https://code.visualstudio.com/download)
