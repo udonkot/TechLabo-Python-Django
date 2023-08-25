@@ -36,7 +36,7 @@ def select_data():
         logger.debug(f"result: {result}")
 
         logger.info("End select data.")
- 
+
         return str(result)
 
     except Exception:
@@ -61,3 +61,47 @@ def _get_connection():
     )
 
     return connection
+
+'''
+「data」テーブルに登録
+'''
+def insert_data():
+    logger = logging.getLogger("app")
+
+    #dataテーブルに登録するプログラムを書く
+
+    sql = "INSERT INTO sample_table (id, data) VALUES (99, 'data-99');"
+
+    result = {
+        "result": True,
+        "data": None
+    }
+
+    try:
+        logger.info("Start insert data.")
+
+        connection = _get_connection()
+        with connection:
+            with connection.cursor(cursor_factory=DictCursor) as cursor:
+                cursor.execute(sql)
+                rows = cursor.fetchall()
+                logger.debug(f"rows: {rows}")
+            connection.commit()
+
+        result["data"] = [
+            rows[row][0] for row in range(len(rows))
+        ]
+        logger.debug(f"result: {result}")
+
+        logger.info("End insert data.")
+
+        return str(result)
+
+    except Exception:
+        logger.error("Exception occored.")
+        logger.error(traceback.format_exc())
+
+        result["result"] = False
+        logger.debug(f"result: {result}")
+
+        return str(result)

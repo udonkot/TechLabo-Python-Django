@@ -20,4 +20,5 @@ from . import views
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("database/data/", views.data),
+    path("database/register/data", views.insertData),
 ]

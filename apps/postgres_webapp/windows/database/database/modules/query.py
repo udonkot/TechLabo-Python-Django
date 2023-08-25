@@ -53,6 +53,8 @@ def insert_data(data):
 
         # TODO レコードを追加する処理を実装
 
+        sample_table = models.SapmleTable.objects.all()
+        sample_table.create(id=100, sample_data='hoge-100')
         logger.info("End insert data.")
 
         return result

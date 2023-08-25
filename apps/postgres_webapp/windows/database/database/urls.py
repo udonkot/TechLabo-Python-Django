@@ -23,4 +23,5 @@ urlpatterns = [
 
     # URLは以下に追加する
     path("database/get/data/", views.select_data),
+    path("database/register/data/", views.insert_data),
 ]
