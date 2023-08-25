@@ -8,6 +8,10 @@
 - VSCode (Extentions：Pylance, Git Graphをインストールしておく) [URL](https://code.visualstudio.com/download)
 - Git [URL](https://git-scm.com/downloads)
 
+事前に読んでおくと良い記事・動画
+- Djangoとは [URL](https://itc.tokyo/django/what-is-django/)
+- Gitの操作について [URL](https://www.youtube.com/watch?v=LDOR5HfI_sQ)
+
 ### 2. インストール
 
 #### 1. リモートリポジトリを作成
