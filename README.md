@@ -4,8 +4,8 @@
 
 ### 1. 前提条件
 以下がローカルPCにインストールされていること
-- Python(version 3以上) [URL](https://www.python.org/downloads/)
-- VSCode [URL](https://code.visualstudio.com/download)
+- Python (version 3以上) [URL](https://www.python.org/downloads/)
+- VSCode (Extentions『Git Graph』をインストールしておく) [URL](https://code.visualstudio.com/download)
 - Git [URL](https://git-scm.com/downloads)
 
 ### 2. インストール
