@@ -313,13 +313,13 @@ http://127.0.0.1:8000/apps/home
 
 ![image](https://github.com/udonkot/TechLabo-Python-Django/assets/40541121/65cee504-b0b7-4958-87ff-b9814eddd225)
 
-左メニュー「Rooms」 > {ユーザ名}
+左メニュー「Rooms」を押下 > {ユーザ名}を押下
 
 以下の画面が表示されること
 
 ![image](https://github.com/udonkot/TechLabo-Python-Django/assets/40541121/eae4d7cf-c460-4446-acd2-44d62baf2fda)
 
-SAMPLE DATA PAGE
+画面中央「SAMPLE DATA PAGE」を押下
 
 以下の画面が表示されること
 
