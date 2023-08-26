@@ -340,6 +340,8 @@ TechLabo-Python-Django\apps\okayasu\logs\
 
 ### 6. リモートリポジトリへマージ
 
+ローカルリポジトリへコミット
+
 作成したブランチへプッシュ
 ```
 feature-webapp-{ユーザ名}
