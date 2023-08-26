@@ -319,7 +319,7 @@ http://127.0.0.1:8000/apps/home
 
 ![image](https://github.com/udonkot/TechLabo-Python-Django/assets/40541121/eae4d7cf-c460-4446-acd2-44d62baf2fda)
 
-SAMPLE DATA PAGE > 「SAMPLE DATA PAGE」に遷移
+SAMPLE DATA PAGE
 
 以下の画面が表示されること
 
