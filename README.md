@@ -310,16 +310,19 @@ http://127.0.0.1:8000/apps/home
 ```
 
 以下の画面が表示されること
+
 ![image](https://github.com/udonkot/TechLabo-Python-Django/assets/40541121/65cee504-b0b7-4958-87ff-b9814eddd225)
 
 左メニュー「Rooms」 > {ユーザ名}
 
 以下の画面が表示されること
+
 ![image](https://github.com/udonkot/TechLabo-Python-Django/assets/40541121/eae4d7cf-c460-4446-acd2-44d62baf2fda)
 
 SAMPLE DATA PAGE > 「SAMPLE DATA PAGE」に遷移
 
 以下の画面が表示されること
+
 ![image](https://github.com/udonkot/TechLabo-Python-Django/assets/40541121/1c0df2af-c13b-422d-9803-15f63d2e16a8)
 
 ---
