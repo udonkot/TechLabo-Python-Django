@@ -184,7 +184,7 @@ TechLabo-Python-Django\apps\{ユーザ名}\models.py
 
 以下のファイルの内容をコピー
 ```
-TechLabo-Python-Django\apps\{ユーザ名}\models.py
+TechLabo-Python-Django\apps\sample\models.py
 ```
 
 以下のフォルダに移動
