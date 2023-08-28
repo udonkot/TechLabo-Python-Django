@@ -194,7 +194,7 @@ cd {クローン先のディレクトリ}\TechLabo-Python-Django\
 
 データベースをセットアップ
 ```
-python manage.py makemigrations {アプリ名}
+python manage.py makemigrations {ユーザ名}
 ```
 
 ファイルを開く
@@ -212,7 +212,7 @@ TechLabo-Python-Django\facescore\settings.py
 
 データベースの設定を適用
 ```
-python manage.py migrate {アプリ名} --database={ユーザ名}_sqlite
+python manage.py migrate {ユーザ名} --database={ユーザ名}_sqlite
 ```
 
 #### 6. データベース初期値の設定
