@@ -156,6 +156,7 @@ TechLabo-Python-Django\apps\templates\apps\sidebar.html
 ```
 ```
 <a href="/apps/{ユーザ名}" class="dropdown-item">{ユーザ名}</a>
+※既にリンクが存在する場合は過去のリンクを削除する
 ```
 
 #### 4. 設定ファイル（Django用の設定）
@@ -219,7 +220,7 @@ python manage.py migrate {ユーザ名} --database={ユーザ名}_sqlite
 
 以下のファイルを右クリック > Open Database
 ```
-TechLabo-Python-Django\facescore\db.sqlite3
+TechLabo-Python-Django\apps\{ユーザ名}\db.sqlite3
 ```
 
 画面左下のタブ「SQLITE EXPLORER」を展開
