@@ -5,7 +5,7 @@
 ### 1. 事前準備
 以下がローカルPCにインストールされていること
 - Python (version 3以上) [URL](https://www.python.org/downloads/)
-- VSCode (Extentions：Pylance, Git Graphをインストールしておく) [URL](https://code.visualstudio.com/download)
+- VSCode (Extentions：Pylance, Git Graph, SQLiteをインストールしておく) [URL](https://code.visualstudio.com/download)
 - Git [URL](https://git-scm.com/downloads)
 
 事前に読んでおくと良い記事・動画
@@ -25,9 +25,9 @@ https://github.com/udonkot/TechLabo-Python-Django
 
 以下の操作を行う
 
-　プルダウン「master」 > View all branches > New branch
+　プルダウン「feature-webapp-sample」 > 「View all branches」 > 「New branch」
 
-　branch name 「feature-webapp-{ユーザ名}」 > source 「feature-webapp-sample」 > Create new branch
+　branch name 「feature-webapp-{ユーザ名}」 > source 「feature-webapp-sample」 > 「Create new branch」
 
 #### 2. ローカルリポジトリ用のフォルダを作成
 
@@ -37,9 +37,7 @@ https://github.com/udonkot/TechLabo-Python-Django
 
 Git操作用のツールを起動（Git Bash, VScode, コマンドプロンプトなどツールは任意）
 
-2.で作成したフォルダに移動
-
-URLを指定してクローン
+2.で作成したフォルダでURLを指定してクローン
 ```
 https://github.com/udonkot/TechLabo-Python-Django.git
 ```
@@ -62,7 +60,7 @@ VScodeを起動、「terminal」を開き以下コマンドを実行（端末の
 {2.で作成したフォルダ}\TechLabo-Python-Django\apps\venv\Scripts\activate.bat
 ```
 
-【※補足】Python仮想環境を停止させる場合
+【補足】Python仮想環境を停止させる時に使用
 ```
 {2.で作成したフォルダ}\TechLabo-Python-Django\apps\venv\Scripts\deactivate.bat
 ```
@@ -234,7 +232,7 @@ TechLabo-Python-Django\apps\{ユーザ名}\db.sqlite3
 INSERT INTO {ユーザ名}_sampletable (sample_data) VALUES ('data-1');
 SELECT id, {ユーザ名}_sampletable FROM sample_table;
 
-※デリート時に使用
+【補足】デリート時に使用
 DELETE FROM {ユーザ名}_sampletable WHERE id = '1';
 DELETE FROM {ユーザ名}_sampletable;
 ```
