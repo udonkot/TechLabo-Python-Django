@@ -174,7 +174,22 @@ LAUNCH_APP = "{ユーザ名}"
 ※セキュリティ情報のため、設定する値はSlackで連携します
 ```
 
-#### 5. データベース(sqlite)の設定
+#### 5. その他
+
+以下のファイルの中身を全てコメントアウトする（予期せぬエラーが発生するため）
+```
+TechLabo-Python-Django\apps\{ユーザ名}\apps.py
+```
+
+以下のログファイルを作成
+```
+TechLabo-Python-Django\apps\okayasu\logs\
+・app.log（アプリケーションのログ）
+・django.log（Django関連のログ）
+```
+
+
+#### 6. データベース(sqlite)の設定
 
 ファイルを開く
 ```
@@ -214,7 +229,7 @@ TechLabo-Python-Django\facescore\settings.py
 python manage.py migrate {ユーザ名} --database={ユーザ名}_sqlite
 ```
 
-#### 6. データベース初期値の設定
+#### 7. データベース初期値の設定
 
 以下のファイルを右クリック > Open Database
 ```
@@ -256,7 +271,7 @@ TechLabo-Python-Django\apps\{ユーザ名}\config\config.ini
 
 作成したファイルに、以下の内容をコピー 
 ```
-'''データベース設定'''
+# データベース設定
 [database_setting]
 
 # 使用するRDBMS
@@ -266,7 +281,7 @@ rdbms=sqlite
 # sqliteの設定
 database_sqlite={ユーザ名}_sqlite
 
-'''インタフェース設定'''
+# インタフェース設定
 [interface_setting]
 ip=localhost
 port=8000
@@ -282,12 +297,7 @@ path_insert_data=apps/{ユーザ名}/insert/data/
 TechLabo-Python-Django\apps\{ユーザ名}\logs\
 ```
 
-#### 3. 不要な記述をコメントアウト
 
-以下のファイルの中身を全てコメントアウトする
-```
-TechLabo-Python-Django\apps\okayasu\apps.py
-```
 
 #### 4. 起動 
 
