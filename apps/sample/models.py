@@ -5,6 +5,3 @@ class SapmleTable(models.Model):
 
     def __str__(self):
         return self.sample_data
-
-    class Meta:
-        db_table = 'sample_table'
