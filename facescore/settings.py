@@ -48,6 +48,7 @@ INSTALLED_APPS = [
 
     # ユーザ用アプリケーション
     'apps.okayasu',
+    'apps.kobayashi',
 ]
 
 MIDDLEWARE = [
@@ -95,6 +96,11 @@ DATABASES = {
     'okayasu_sqlite': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'apps/' 'okayasu/' 'db.sqlite3',
+    },
+    # ユーザ用データベース
+    'kobayashi_sqlite': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'apps/' 'kobayashi/' 'db.sqlite3',
     },
 }
 
