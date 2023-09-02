@@ -5,7 +5,16 @@
 ### 1. 事前準備
 以下がローカルPCにインストールされていること
 - Python (version 3以上) [URL](https://www.python.org/downloads/)
-- VSCode (Extentions：Pylance, Git Graph, SQLiteをインストールしておく) [URL](https://code.visualstudio.com/download)
+- VSCode [URL](https://code.visualstudio.com/download)
+
+  以下のExtentionsインストールしておく
+
+  ・SQLite (必須)
+
+  ・Git (任意)
+
+  ・Pylance (任意)
+
 - Git [URL](https://git-scm.com/downloads)
 
 事前に読んでおくと良い記事・動画
@@ -55,7 +64,11 @@ feature-webapp-{ユーザ名}
 
 #### 1. Python仮想環境を起動
 
-VScodeを起動、「terminal」を開き以下コマンドを実行（端末のOSがWindows以外の場合はパス区切り文字を適宜変更）
+VScodeを起動、「terminal」を開く
+
+※terminalの種類はComand Promptを選択 (Power Shellでは仮想環境が無効になる場合があるため)
+
+以下コマンドを実行（端末のOSがWindows以外の場合はパス区切り文字を適宜変更）
 ```
 {2.で作成したフォルダ}\TechLabo-Python-Django\apps\venv\Scripts\activate.bat
 ```
@@ -100,7 +113,7 @@ django-admin startapp {ユーザ名}　（ユーザ名は名字のアルファ�
 TechLabo-Python-Django\facescore\settings.py
 ```
 
-「INSTALLED_APPS」を検索、Listにアプリを追加 （アプリ名：app.{ユーザ名}）
+「INSTALLED_APPS」を検索、Listにアプリを追加 （アプリ名：apps.{ユーザ名}）
 
 #### 2. ルーティングの設定
 
@@ -183,7 +196,7 @@ TechLabo-Python-Django\apps\{ユーザ名}\apps.py
 
 以下のログファイルを作成
 ```
-TechLabo-Python-Django\apps\okayasu\logs\
+TechLabo-Python-Django\apps\{ユーザ名}\logs\
 ・app.log（アプリケーションのログ）
 ・django.log（Django関連のログ）
 ```
@@ -232,6 +245,9 @@ python manage.py migrate {ユーザ名} --database={ユーザ名}_sqlite
 #### 7. データベース初期値の設定
 
 以下のファイルを右クリック > Open Database
+
+※ExtentionsでSQLiteをインストールしていること
+
 ```
 TechLabo-Python-Django\apps\{ユーザ名}\db.sqlite3
 ```
@@ -245,7 +261,7 @@ TechLabo-Python-Django\apps\{ユーザ名}\db.sqlite3
 -- SQLiteファイルにSQLをコピー
 ```
 INSERT INTO {ユーザ名}_sampletable (sample_data) VALUES ('data-1');
-SELECT id, {ユーザ名}_sampletable FROM sample_table;
+SELECT id, sample_table FROM {ユーザ名}_sampletable;
 
 【補足】デリート時に使用
 DELETE FROM {ユーザ名}_sampletable WHERE id = '1';
@@ -290,16 +306,7 @@ path_select_data=apps/{ユーザ名}/select/data/
 path_insert_data=apps/{ユーザ名}/insert/data/
 ```
 
-#### 2. ログ出力ディレクトリ
-
-ディレクトリを作成（ログファイルは起動時に自動で作成される）
-```
-TechLabo-Python-Django\apps\{ユーザ名}\logs\
-```
-
-
-
-#### 4. 起動 
+#### 2. 起動 
 
 以下のディレクトリに移動
 ```
@@ -311,7 +318,7 @@ cd {クローン先のディレクトリ}\TechLabo-Python-Django\
 python manage.py runserver 8000
 ```
 
-#### 5. 画面操作
+#### 3. 画面操作
 
 ブラウザで以下のURLにアクセス
 ```
@@ -340,7 +347,7 @@ http://127.0.0.1:8000/apps/home
 
 エラー内容は以下のログファイルを確認
 ```
-TechLabo-Python-Django\apps\okayasu\logs\
+TechLabo-Python-Django\apps\{ユーザ名}\logs\
 ・app.log（アプリケーションのログ）
 ・django.log（Django関連のログ）
 ```
