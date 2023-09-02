@@ -11,7 +11,7 @@
 
   ・SQLite (必須)
 
-  ・Git (任意)
+  ・Git Graph(任意)
 
   ・Pylance (任意)
 
