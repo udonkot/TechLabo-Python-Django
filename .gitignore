@@ -10,4 +10,4 @@ apps/**/logs/*.log
 apps/**/db.sqlite3
 apps/.venv
 media/uploads
-.DS_Store
+./.DS_Store
