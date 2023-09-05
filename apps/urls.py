@@ -16,9 +16,11 @@ urlpatterns = [
     # ユーザ用のURL
     # apps/{ユーザ名}配下のurls.pyへリクエストを転送する
     path('okayasu/', include('apps.okayasu.urls')),
+    path('hazeyama/', include('apps.hazeyama.urls')),
 
-    #path('hazeyama/', views.hazeyama, name='hazeyama'),
+    # path('hazeyama/', views.hazeyama, name='hazeyama'),
     path('kondo/', include('apps.kondo.urls'), name='kondoDir'),
+    # path('hazeyama/', include('apps.hazeyama.urls')),
 ]
 
 if settings.DEBUG:

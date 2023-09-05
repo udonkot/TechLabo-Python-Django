@@ -48,6 +48,7 @@ INSTALLED_APPS = [
 
     # ユーザ用アプリケーション
     'apps.okayasu',
+    'apps.hazeyama'
 ]
 
 MIDDLEWARE = [
@@ -96,6 +97,10 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'apps/' 'okayasu/' 'db.sqlite3',
     },
+    'hazeyama_sqlite': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'apps/' 'hazeyama/' 'db.sqlite3',
+    }
 }
 
 
