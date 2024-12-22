@@ -12,11 +12,12 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # 環境変数取得
-KEY = os.getenv('KEY')
-KEY2 = os.getenv('KEY2')
-ENDPOINT = os.getenv('ENDPOINT')
+# face apiのサービス削除に伴うコメントアウト
+# KEY = os.getenv('KEY')
+# KEY2 = os.getenv('KEY2')
+# ENDPOINT = os.getenv('ENDPOINT')
 
-face_client = FaceClient(ENDPOINT, CognitiveServicesCredentials(KEY))
+# face_client = FaceClient(ENDPOINT, CognitiveServicesCredentials(KEY))
 
 """
 FaceAPI サンプル実装
